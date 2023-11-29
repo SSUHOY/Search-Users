@@ -5,6 +5,13 @@ export const User = styled.div`
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+  max-width: 340px;
+  height: 150px;
+  width: 100%;
+  background-color: #c9c9ca;
+  border-radius: 10px;
+  margin-top: 20px;
+  padding: 15px;
 `;
 
 export const Avatar = styled.div`
@@ -21,7 +28,7 @@ export const UserImage = styled.img`
 export const UserInfo = styled.div`
   display: flex;
   flex-direction: column;
-  width: 160px;
+  width: 150px;
   padding-left: 30px;
 `;
 
@@ -44,10 +51,10 @@ export const UserDescription = styled.p`
 `;
 
 export const ViewProfileLink = styled.a`
-text-decoration: none;
+  text-decoration: none;
   font-size: 10px;
   font-weight: bold;
   color: #1f6feb;
   cursor: pointer;
   margin-top: 34px;
-`
+`;

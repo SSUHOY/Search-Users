@@ -32,12 +32,6 @@ export const SearchResults = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 380px;
-  height: 150px;
   width: 100%;
-  background-color: #c9c9ca;
-  border-radius: 10px;
-  margin-top: 20px;
-  padding: 15px;
 `;
 

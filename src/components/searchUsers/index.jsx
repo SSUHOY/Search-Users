@@ -1,5 +1,5 @@
 import React from "react";
-import * as S from './UserCard.styles'
+import * as S from "./UserCard.styles";
 
 const UserCard = () => {
   return (
