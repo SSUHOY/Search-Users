@@ -6,8 +6,9 @@ export const Container = styled.div`
   overflow: hidden;
   background-color: white;
   display: flex;
+  padding-top: 10px;
   flex-direction: column;
   align-items: center;
-  padding-top: 50px;
-  background-color: #f7f8f9;
+  background-color: #0d1117;
 `;
+

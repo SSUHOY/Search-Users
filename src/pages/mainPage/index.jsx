@@ -2,6 +2,7 @@ import React from "react";
 import {
   SearchButton,
   SearchForm,
+  SearchInput,
   SearchResults,
   SearchTitle,
 } from "./mainPage.styles";
@@ -14,7 +15,7 @@ const Main = () => {
       <SearchForm>
         <SearchTitle>GitHub Search User</SearchTitle>
         <form>
-          <input type="text" placeholder="Type any text" />
+          <SearchInput type="text" placeholder="type any text" />
           <SearchButton>Search</SearchButton>
         </form>
       </SearchForm>

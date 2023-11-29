@@ -17,5 +17,11 @@ color: #000000;
 box-sizing: border-box;
 }
 
+a,
+a:visited {
+text-decoration: none;
+font-family: 'Roboto', sans-serif;
+cursor: pointer;
+}
 
 `;

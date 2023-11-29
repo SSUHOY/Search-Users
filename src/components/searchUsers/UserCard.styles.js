@@ -2,16 +2,14 @@ import styled from "styled-components";
 
 export const User = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  padding: 10px 20px;
+  max-width: 540px;
   width: 100%;
-  max-width: 340px;
-  height: 150px;
-  width: 100%;
-  background-color: #c9c9ca;
-  border-radius: 10px;
+  min-height: 120px;
   margin-top: 20px;
-  padding: 15px;
+  color: #fff;
+  background-color: #161b22;
+  border-radius: 10px;
 `;
 
 export const Avatar = styled.div`
@@ -28,33 +26,33 @@ export const UserImage = styled.img`
 export const UserInfo = styled.div`
   display: flex;
   flex-direction: column;
-  width: 150px;
   padding-left: 30px;
+  color: #fff;
 `;
 
 export const UserName = styled.h4`
-  font-size: 14px;
+  font-size: 18px;
   font-weight: bold;
   margin-bottom: 2px;
 `;
 
 export const UserId = styled.small`
-  font-size: 8px;
-  margin-bottom: 25px;
+  font-size: 10px;
+  margin-bottom: 20px;
 `;
 
 export const UserDescription = styled.p`
-  font-size: 10px;
+  font-size: 12px;
   overflow: hidden;
+  width: 300px;
   white-space: nowrap;
   text-overflow: ellipsis;
+  margin-bottom: 10px;
 `;
 
 export const ViewProfileLink = styled.a`
-  text-decoration: none;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: bold;
   color: #1f6feb;
   cursor: pointer;
-  margin-top: 34px;
 `;
