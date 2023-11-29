@@ -1,10 +1,13 @@
-import './App.css';
+import "./App.css";
+import { GlobalStyle } from "./components/styles/global/Global.styles";
+import Main from "./pages/mainPage";
 
 function App() {
   return (
-    <div className="App">
-     <h2>Welcome to Search-Users-App</h2>
-    </div>
+    <>
+      <Main />
+      <GlobalStyle />
+    </>
   );
 }
 
