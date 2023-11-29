@@ -27,6 +27,8 @@ export const UserInfo = styled.div`
   display: flex;
   flex-direction: column;
   padding-left: 30px;
+  row-gap: 4px;
+  justify-content: center;
   color: #fff;
 `;
 
@@ -38,7 +40,6 @@ export const UserName = styled.h4`
 
 export const UserId = styled.small`
   font-size: 10px;
-  margin-bottom: 20px;
 `;
 
 export const UserDescription = styled.p`
@@ -47,7 +48,6 @@ export const UserDescription = styled.p`
   width: 300px;
   white-space: nowrap;
   text-overflow: ellipsis;
-  margin-bottom: 10px;
 `;
 
 export const ViewProfileLink = styled.a`

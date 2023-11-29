@@ -1,10 +1,17 @@
 import React from "react";
 import * as S from "./userPage.styles";
 import { Container } from "../../components/styles/reusable";
-import { FollowersIcon, GitHubLink, LocationIcon, WebSiteIcon } from "../../assets/icons";
-
+import {
+  FollowersIcon,
+  GitHubLink,
+  LocationIcon,
+  WebSiteIcon,
+} from "../../assets/icons";
+import { useParams } from "react-router-dom";
 
 export const UserPage = () => {
+  const { login } = useParams();
+  console.log(login);
   return (
     <Container>
       <S.UserInformation>
@@ -17,40 +24,36 @@ export const UserPage = () => {
             <S.UserDescription>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam,
               iure. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Nam, iure.
+              Nam, iure. Lorem ipsum dolor sit amet consectetur adipisicing
+              elit. Nam, iure. Lorem ipsum dolor sit amet consectetur
+              adipisicing elit. Nam, iure. Lorem ipsum dolor sit amet
+              consectetur adipisicing elit. Nam, iure. Lorem ipsum dolor sit
+              amet consectetur adipisicing elit. Nam, iure. Lorem ipsum dolor
+              sit amet consectetur adipisicing elit. Nam, iure. Lorem ipsum
+              dolor sit amet consectetur adipisicing elit. Nam, iure. Lorem
+              ipsum dolor sit amet consectetur adipisicing elit. Nam, iure.
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam,
               iure. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Nam, iure.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam,
-              iure. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Nam, iure.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam,
-              iure. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Nam, iure.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam,
-              iure. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Nam, iure.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam,
-              iure. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Nam, iure.
+              Nam, iure. Lorem ipsum dolor sit amet consectetur adipisicing
+              elit. Nam, iure.
             </S.UserDescription>
           </S.UserDescriptionBox>
 
           <S.UserMoreData>
             <S.Followers>
-             <FollowersIcon/>
+              <FollowersIcon />
               20 Followers, 10 Following
             </S.Followers>
             <S.GeoLocation>
-             <LocationIcon/>
+              <LocationIcon />
               USA
             </S.GeoLocation>
             <S.WebSite>
-            <WebSiteIcon/>
+              <WebSiteIcon />
               sadasd
             </S.WebSite>
             <S.GitHubLink>
-            <GitHubLink/>
+              <GitHubLink />
               123213.git{" "}
             </S.GitHubLink>
           </S.UserMoreData>

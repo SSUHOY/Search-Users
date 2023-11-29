@@ -2,9 +2,10 @@ import styled from "styled-components";
 
 export const SearchForm = styled.div`
   background-color: #21262d;
-  padding: 20px;
+  padding: 16px;
   border-radius: 10px;
-  height: 100px;
+  height: 120px;
+  width: 400px;
   display: flex;
   flex-direction: column;
 `;
@@ -17,25 +18,31 @@ export const SearchTitle = styled.h4`
 `;
 
 export const SearchButton = styled.button`
-  width: 50px;
-  height: 20px;
+  width: 300px;
+  height: 21px;
   border: none;
   border-radius: 5px;
   font-size: 12px;
   color: white;
   font-weight: bold;
   cursor: pointer;
-  margin-left: 5px;
+  margin-top: 10px;
   background-color: #1f6feb;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    background-color: #365774;
+  }
 `;
 
 export const SearchInput = styled.input`
-  width: 200px;
+  width: 100%;
+  height: 25px;
   background-color: #0d1117;
   color: white;
-  border: 1px solid #b1b7bb;
+  border: 1px solid grey;
   border-radius: 5px;
   padding-left: 10px;
+  font-size: 12px;
   &::placeholder {
     font-style: normal;
     font-weight: 400;

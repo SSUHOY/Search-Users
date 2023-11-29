@@ -8,7 +8,7 @@ export const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<Main />} />
-      <Route path="/user" element={<UserPage />} />
+      <Route path="/users/:login" element={<UserPage />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
