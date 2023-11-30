@@ -9,6 +9,7 @@ export const SearchForm = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
 export const SearchTitle = styled.h4`
   color: white;
   text-align: center;
@@ -26,7 +27,7 @@ export const SearchButton = styled.button`
   color: white;
   font-weight: bold;
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 12px;
   background-color: #1f6feb;
   transition: all 0.2s ease-in-out;
   &:hover {
@@ -50,6 +51,26 @@ export const SearchInput = styled.input`
     line-height: 24px;
     color: grey;
   }
+`;
+
+export const Error = styled.p`
+  position: absolute;
+  top: 82px;
+  font-size: 8px;
+  color: coral;
+`;
+export const ResultsError = styled.p`
+  font-size: 15px;
+  color: #fff;
+  padding-top: 20px;
+`;
+
+export const PaginationBlock = styled.div`
+  display: flex;
+  width: 400px;
+  row-gap: 16px;
+  flex-direction: row;
+  justify-content: flex-end;
 `;
 
 export const SearchResults = styled.div`

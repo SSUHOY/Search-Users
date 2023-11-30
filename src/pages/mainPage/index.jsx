@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import {
+  Error,
+  PaginationBlock,
   SearchButton,
   SearchForm,
   SearchInput,
@@ -9,15 +11,17 @@ import {
 import UserCard from "../../components/searchUsers";
 import { Container } from "../../components/styles/reusable";
 import axios from "../../axios";
+import { Pagination } from "../../components/pagination";
 
-const Main = () => {
+const Main = ({ users, setUsers, paginationVisible, setPaginationVisible }) => {
   const [query, setQuery] = useState("");
-  // Users fetched from the API
-  const [users, setUsers] = useState([]);
-  console.log("🚀 ~ file: index.jsx:17 ~ Main ~ users:", users);
+  const [error, setError] = useState("");
 
   const handleQueryInput = (event) => {
     const value = event.target.value;
+    if (value) {
+      setError("");
+    }
     setQuery(value);
   };
 
@@ -35,6 +39,9 @@ const Main = () => {
     if (query) {
       const items = await fetchUsers();
       setUsers(items);
+      setPaginationVisible(true);
+    } else {
+      setError("please enter a text to search");
     }
     setQuery("");
   };
@@ -55,11 +62,17 @@ const Main = () => {
             value={query}
             onChange={handleQueryInput}
           />
+          <Error>{error}</Error>
           <SearchButton onClick={handleSearchUsers}>Search</SearchButton>
         </form>
       </SearchForm>
+      {users.length !== 0 && paginationVisible && (
+        <PaginationBlock>
+          <Pagination />
+        </PaginationBlock>
+      )}
       <SearchResults>
-        {users.map((user, index) => (
+        {users?.map((user, index) => (
           <UserCard key={index} user={user} />
         ))}
       </SearchResults>

@@ -15,6 +15,15 @@ height: 100%;
 font-family: 'Roboto', sans-serif;
 color: #000000;
 box-sizing: border-box;
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+}
+
+button{
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
 }
 
 a,

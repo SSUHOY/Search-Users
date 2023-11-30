@@ -9,9 +9,12 @@
     "axios": "^1.6.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-loading-skeleton": "^3.3.1",
+    "react-paginate": "^8.2.0",
     "react-router-dom": "^6.20.0",
     "react-scripts": "5.0.1",
     "router-dom": "^2.2.11",
+    "sass-loader": "^13.3.2",
     "styled-components": "^6.1.1",
     "web-vitals": "^2.1.4"
   },
@@ -41,6 +44,7 @@
   },
   "devDependencies": {
     "eslint": "^8.54.0",
-    "eslint-plugin-react": "^7.33.2"
+    "eslint-plugin-react": "^7.33.2",
+    "sass": "^1.69.5"
   }
 }
