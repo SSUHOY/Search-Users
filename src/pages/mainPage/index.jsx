@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Error,
+  Header,
+  HeaderBtn,
   PaginationBlock,
   SearchButton,
   SearchForm,
@@ -13,8 +15,28 @@ import { Container } from "../../components/styles/reusable";
 import axios from "../../axios";
 import { Pagination } from "../../components/pagination";
 
-const Main = ({ users, setUsers, paginationVisible, setPaginationVisible }) => {
-  const [query, setQuery] = useState("");
+const Main = ({
+  users,
+  setUsers,
+  paginationVisible,
+  setPaginationVisible,
+  query,
+  setQuery,
+  currentPage,
+  setCurrentPage,
+
+}) => {
+
+
+
+  const CLIENT_ID = "17aedf310df8900ee2d8";
+  // Login with github
+  function loginWithGithub() {
+    window.location.assign(
+      "https://github.com/login/oauth/authorize?client_id=" + CLIENT_ID
+    );
+  }
+
   const [error, setError] = useState("");
 
   const handleQueryInput = (event) => {
@@ -27,8 +49,13 @@ const Main = ({ users, setUsers, paginationVisible, setPaginationVisible }) => {
 
   const fetchUsers = async () => {
     try {
-      const { data } = await axios.get("search/users?q=" + query);
-      return data?.items;
+      const { data } = await axios.get(
+        "search/users?q=" +
+          query +
+          `&page=${currentPage}` +
+          "&per_page=10" 
+      );
+      return setUsers(data?.items);
     } catch (error) {
       console.error(error);
     }
@@ -37,17 +64,23 @@ const Main = ({ users, setUsers, paginationVisible, setPaginationVisible }) => {
   const handleSearchUsers = async (e) => {
     e.preventDefault();
     if (query) {
-      const items = await fetchUsers();
-      setUsers(items);
+      await fetchUsers();
       setPaginationVisible(true);
     } else {
       setError("please enter a text to search");
     }
-    setQuery("");
   };
+
+  useEffect(() => {
+    fetchUsers();
+  }, [currentPage]);
 
   return (
     <Container>
+      <Header>
+        <HeaderBtn onClick={loginWithGithub}>Login with GitHub</HeaderBtn>
+      </Header>
+
       <SearchForm>
         <SearchTitle>GitHub Search User</SearchTitle>
         <form
@@ -68,7 +101,7 @@ const Main = ({ users, setUsers, paginationVisible, setPaginationVisible }) => {
       </SearchForm>
       {users.length !== 0 && paginationVisible && (
         <PaginationBlock>
-          <Pagination />
+          <Pagination onChangePage={(number) => setCurrentPage(number)} />
         </PaginationBlock>
       )}
       <SearchResults>

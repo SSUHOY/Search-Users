@@ -1,5 +1,27 @@
 import styled from "styled-components";
 
+export const Header = styled.header`
+width: 100%;
+height: 38px;
+padding: 6px;
+display: flex;
+justify-content: flex-end;
+background-color: #21262d;
+margin-bottom: 20px;
+border-radius: 10px;
+`
+
+export const HeaderBtn = styled.button`
+width: 150px;
+height: 100%;
+background-color: #238636;
+border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+`
+
 export const SearchForm = styled.div`
   background-color: #21262d;
   padding: 16px;

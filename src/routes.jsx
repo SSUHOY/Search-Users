@@ -7,6 +7,9 @@ import { NotFound } from "./pages/notFound";
 export const AppRoutes = () => {
   const [users, setUsers] = useState([]);
   const [paginationVisible, setPaginationVisible] = useState(false);
+  const [query, setQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState(0);
+
 
   return (
     <Routes>
@@ -18,6 +21,11 @@ export const AppRoutes = () => {
             setPaginationVisible={setPaginationVisible}
             users={users}
             setUsers={setUsers}
+            query={query}
+            setQuery={setQuery}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+
           />
         }
       />
