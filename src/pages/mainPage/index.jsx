@@ -58,7 +58,7 @@ const Main = ({ users, setUsers, paginationVisible, setPaginationVisible }) => {
           }}>
           <SearchInput
             type="text"
-            placeholder="Search users by login"
+            placeholder="Search users by login on GitHub"
             value={query}
             onChange={handleQueryInput}
           />
