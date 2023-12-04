@@ -45,7 +45,7 @@ const Main = ({
           `&page=${currentPage}` +
           "&per_page=10" +
           "&sort=repositories" +
-          `&order=desc`
+          `&order=${sortType.sortProperty}`
       );
       console.log(data);
       return setUsers(data?.items);
