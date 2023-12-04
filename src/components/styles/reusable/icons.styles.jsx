@@ -18,5 +18,9 @@ export const GitHubLink = styled.img`
   width: 17px;
   height: 10.06px;
 `;
+export const RepositoryIcon = styled.img`
+  width: 150px;
+  height: 100px;
+`;
 
 

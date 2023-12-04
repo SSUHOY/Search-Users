@@ -1,5 +1,27 @@
 import styled from "styled-components";
 
+export const Header = styled.header`
+  width: 100%;
+  height: 38px;
+  padding: 6px;
+  display: flex;
+  justify-content: flex-end;
+  background-color: #21262d;
+  margin-bottom: 20px;
+  border-radius: 10px;
+`;
+
+export const HeaderBtn = styled.button`
+  width: 150px;
+  height: 100%;
+  background-color: #238636;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+`;
+
 export const SearchForm = styled.div`
   background-color: #21262d;
   padding: 16px;
@@ -9,6 +31,7 @@ export const SearchForm = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
 export const SearchTitle = styled.h4`
   color: white;
   text-align: center;
@@ -26,7 +49,7 @@ export const SearchButton = styled.button`
   color: white;
   font-weight: bold;
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 12px;
   background-color: #1f6feb;
   transition: all 0.2s ease-in-out;
   &:hover {
@@ -50,6 +73,29 @@ export const SearchInput = styled.input`
     line-height: 24px;
     color: grey;
   }
+`;
+
+export const Error = styled.p`
+  position: absolute;
+  top: 82px;
+  font-size: 8px;
+  color: coral;
+`;
+export const ResultsError = styled.p`
+  font-size: 15px;
+  color: #fff;
+  padding-top: 20px;
+`;
+
+export const PaginationBlock = styled.div`
+  display: flex;
+  width: 480px;
+  row-gap: 16px;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding: 4px;
+  border-radius: 10px;
 `;
 
 export const SearchResults = styled.div`

@@ -2,11 +2,11 @@ import styled from "styled-components";
 
 export const User = styled.div`
   display: flex;
-  padding: 10px 20px;
-  max-width: 540px;
+  padding: 10px 10px;
+  max-width: 500px;
   width: 100%;
   min-height: 120px;
-  margin-top: 20px;
+  margin-top: 10px;
   color: #fff;
   background-color: #161b22;
   border-radius: 10px;
@@ -20,7 +20,7 @@ export const Avatar = styled.div`
 export const UserImage = styled.img`
   width: 120px;
   height: 120px;
-  border-radius: 10px;
+  border-radius: 8px;
 `;
 
 export const UserInfo = styled.div`
