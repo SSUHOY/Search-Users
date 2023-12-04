@@ -15,6 +15,7 @@ import { Container } from "../../components/styles/reusable";
 import axios from "../../axios";
 import { Pagination } from "../../components/pagination";
 import { SortByRepos } from "../../components/sorting";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const Main = ({
   users,
@@ -38,7 +39,6 @@ const Main = ({
 
   const [error, setError] = useState("");
 
-
   const handleQueryInput = (event) => {
     const value = event.target.value;
     if (value) {
@@ -57,7 +57,7 @@ const Main = ({
           "&sort=repositories" +
           `&order=${sortType.sortProperty}`
       );
-      console.log(data)
+      console.log(data);
       return setUsers(data?.items);
     } catch (error) {
       console.error(error);
@@ -109,6 +109,7 @@ const Main = ({
           <Pagination onChangePage={(number) => setCurrentPage(number)} />
         </PaginationBlock>
       )}
+
       <SearchResults>
         {users?.map((user, index) => (
           <UserCard key={index} user={user} />
