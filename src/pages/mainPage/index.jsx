@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
   Error,
-  Header,
-  HeaderBtn,
   PaginationBlock,
   SearchButton,
   SearchForm,
@@ -15,6 +13,7 @@ import { Container } from "../../components/styles/reusable";
 import axios from "../../axios";
 import { Pagination } from "../../components/pagination";
 import { SortByRepos } from "../../components/sorting";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const Main = ({
   users,
@@ -28,16 +27,7 @@ const Main = ({
   sortType,
   setSortType,
 }) => {
-  const CLIENT_ID = "17aedf310df8900ee2d8";
-  // Login with github
-  function loginWithGithub() {
-    window.location.assign(
-      "https://github.com/login/oauth/authorize?client_id=" + CLIENT_ID
-    );
-  }
-
   const [error, setError] = useState("");
-
 
   const handleQueryInput = (event) => {
     const value = event.target.value;
@@ -55,9 +45,9 @@ const Main = ({
           `&page=${currentPage}` +
           "&per_page=10" +
           "&sort=repositories" +
-          `&order=${sortType.sortProperty}`
+          `&order=desc`
       );
-      console.log(data)
+      console.log(data);
       return setUsers(data?.items);
     } catch (error) {
       console.error(error);
@@ -80,10 +70,6 @@ const Main = ({
 
   return (
     <Container>
-      <Header>
-        <HeaderBtn onClick={loginWithGithub}>Login with GitHub</HeaderBtn>
-      </Header>
-
       <SearchForm>
         <SearchTitle>GitHub Search User</SearchTitle>
         <form
@@ -109,6 +95,7 @@ const Main = ({
           <Pagination onChangePage={(number) => setCurrentPage(number)} />
         </PaginationBlock>
       )}
+
       <SearchResults>
         {users?.map((user, index) => (
           <UserCard key={index} user={user} />

@@ -17,7 +17,6 @@ export const UserPage = () => {
   const [userInfo, setUsersInfo] = useState({});
   const [repos, setRepos] = useState([]);
 
-
   useEffect(() => {
     const fetchUserInfo = async () => {
       try {
@@ -25,9 +24,9 @@ export const UserPage = () => {
           axios.get(`/users/${login}`),
           axios.get(`/users/${login}/repos`),
         ]);
-        console.log(response);
         setUsersInfo(response[0].data);
         setRepos(response[1].data);
+        console.log(response);
       } catch (error) {
         console.error(error);
       }
