@@ -155,6 +155,9 @@ export const UserRepoTitle = styled.h2`
   color: #fff;
   margin-bottom: 12px;
   letter-spacing: 1px;
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 export const UserRepoList = styled.div`
   display: flex;
@@ -179,6 +182,9 @@ export const UserRepoName = styled.h3`
   font-size: 16px;
   color: #fff;
   margin-bottom: 6px;
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
 `;
 
 export const RepoIconBlock = styled.div`
@@ -206,10 +212,16 @@ border-top: 1px solid #35363A;
 export const UserRepoDescription = styled.p`
   font-size: 12px;
   color: #fff;
+  @media (max-width: 768px) {
+    font-size: 9px;
+  }
 `;
 
 export const RepoLang = styled.p`
   font-size: 12px;
-  color: #fff;
+  color: #808080;
   padding-top: 10px;
+  @media (max-width: 768px) {
+    font-size: 10px;
+  }
 `;

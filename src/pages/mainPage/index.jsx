@@ -99,7 +99,7 @@ const Main = ({
       <SkeletonTheme baseColor="#161B22" highlightColor="#444" height="120px">
         <SearchResults>
           {users?.map((user, index) => (
-            <UserCard key={index} user={user} />
+            <UserCard key={index} user={user} currentPage={currentPage}/>
           ))}
         </SearchResults>
       </SkeletonTheme>

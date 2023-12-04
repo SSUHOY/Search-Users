@@ -78,6 +78,9 @@ export const PaginationBlock = styled.div`
   margin-top: 10px;
   padding: 4px;
   border-radius: 10px;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const SearchResults = styled.div`

@@ -4,6 +4,10 @@ export const SortTitleBlock = styled.div`
   display: flex;
   align-items: center;
   padding-bottom: 10px;
+  width: 100%;
+  @media (max-width: 768) {
+    width: 200px;
+  }
 `;
 
 export const SortByReposBlock = styled.div`
@@ -12,12 +16,18 @@ export const SortByReposBlock = styled.div`
   align-items: center;
   padding-right: 10px;
   padding-top: 10px;
+  @media (max-width: 768px) {
+    padding-right: 0px;
+  }
 `;
 
 export const SortTitle = styled.h4`
   font-weight: 600;
   font-size: 10px;
   color: #fff;
+  @media (max-width: 768px) {
+    font-size: 9px;
+  }
 `;
 
 export const InputBlock = styled.div`
@@ -35,4 +45,7 @@ export const Label = styled.label`
   font-size: 10px;
   color: #fff;
   padding-bottom: 4px;
+  @media (max-width: 768px) {
+    font-size: 9px;
+  }
 `;
