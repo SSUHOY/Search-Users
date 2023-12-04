@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
   Error,
-  Header,
-  HeaderBtn,
   PaginationBlock,
   SearchButton,
   SearchForm,
@@ -29,14 +27,6 @@ const Main = ({
   sortType,
   setSortType,
 }) => {
-  const CLIENT_ID = "17aedf310df8900ee2d8";
-  // Login with github
-  function loginWithGithub() {
-    window.location.assign(
-      "https://github.com/login/oauth/authorize?client_id=" + CLIENT_ID
-    );
-  }
-
   const [error, setError] = useState("");
 
   const handleQueryInput = (event) => {
@@ -55,7 +45,7 @@ const Main = ({
           `&page=${currentPage}` +
           "&per_page=10" +
           "&sort=repositories" +
-          `&order=${sortType.sortProperty}`
+          `&order=desc`
       );
       console.log(data);
       return setUsers(data?.items);
@@ -80,10 +70,6 @@ const Main = ({
 
   return (
     <Container>
-      <Header>
-        <HeaderBtn onClick={loginWithGithub}>Login with GitHub</HeaderBtn>
-      </Header>
-
       <SearchForm>
         <SearchTitle>GitHub Search User</SearchTitle>
         <form
