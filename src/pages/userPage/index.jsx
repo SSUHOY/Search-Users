@@ -60,12 +60,11 @@ export const UserPage = () => {
           </S.UserDescriptionBox>
 
           <S.UserMoreData>
-            {userInfo?.followers && (
-              <S.Followers>
-                <FollowersIcon />
-                {userInfo?.followers} Followers, {userInfo?.following} Following
-              </S.Followers>
-            )}
+            <S.Followers>
+              <FollowersIcon />
+              {userInfo?.followers} Followers, {userInfo?.following} Following
+            </S.Followers>
+
             {userInfo?.location && (
               <S.GeoLocation>
                 <LocationIcon />
@@ -97,7 +96,9 @@ export const UserPage = () => {
           </S.UserRepoList>
         </S.UserRepos>
       ) : (
-        ""
+        <S.UserRepos>
+          <S.UserRepoTitle>No Repositories</S.UserRepoTitle>
+        </S.UserRepos>
       )}
     </Container>
   );
