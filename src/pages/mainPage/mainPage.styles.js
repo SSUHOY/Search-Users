@@ -1,26 +1,26 @@
 import styled from "styled-components";
 
 export const Header = styled.header`
-width: 100%;
-height: 38px;
-padding: 6px;
-display: flex;
-justify-content: flex-end;
-background-color: #21262d;
-margin-bottom: 20px;
-border-radius: 10px;
-`
+  width: 100%;
+  height: 38px;
+  padding: 6px;
+  display: flex;
+  justify-content: flex-end;
+  background-color: #21262d;
+  margin-bottom: 20px;
+  border-radius: 10px;
+`;
 
 export const HeaderBtn = styled.button`
-width: 150px;
-height: 100%;
-background-color: #238636;
-border: none;
+  width: 150px;
+  height: 100%;
+  background-color: #238636;
+  border: none;
   border-radius: 5px;
   color: white;
   font-size: 12px;
   font-weight: bold;
-`
+`;
 
 export const SearchForm = styled.div`
   background-color: #21262d;
@@ -89,10 +89,13 @@ export const ResultsError = styled.p`
 
 export const PaginationBlock = styled.div`
   display: flex;
-  width: 400px;
+  width: 480px;
   row-gap: 16px;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding: 4px;
+  border-radius: 10px;
 `;
 
 export const SearchResults = styled.div`

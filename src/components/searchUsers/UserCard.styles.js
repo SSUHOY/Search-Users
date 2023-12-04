@@ -6,7 +6,7 @@ export const User = styled.div`
   max-width: 500px;
   width: 100%;
   min-height: 120px;
-  margin-top: 20px;
+  margin-top: 10px;
   color: #fff;
   background-color: #161b22;
   border-radius: 10px;

@@ -14,6 +14,7 @@ import UserCard from "../../components/searchUsers";
 import { Container } from "../../components/styles/reusable";
 import axios from "../../axios";
 import { Pagination } from "../../components/pagination";
+import { SortByRepos } from "../../components/sorting";
 
 const Main = ({
   users,
@@ -24,11 +25,9 @@ const Main = ({
   setQuery,
   currentPage,
   setCurrentPage,
-
+  sortType,
+  setSortType,
 }) => {
-
-
-
   const CLIENT_ID = "17aedf310df8900ee2d8";
   // Login with github
   function loginWithGithub() {
@@ -38,6 +37,7 @@ const Main = ({
   }
 
   const [error, setError] = useState("");
+
 
   const handleQueryInput = (event) => {
     const value = event.target.value;
@@ -53,8 +53,11 @@ const Main = ({
         "search/users?q=" +
           query +
           `&page=${currentPage}` +
-          "&per_page=10" 
+          "&per_page=10" +
+          "&sort=repositories" +
+          `&order=${sortType.sortProperty}`
       );
+      console.log(data)
       return setUsers(data?.items);
     } catch (error) {
       console.error(error);
@@ -73,7 +76,7 @@ const Main = ({
 
   useEffect(() => {
     fetchUsers();
-  }, [currentPage]);
+  }, [currentPage, sortType]);
 
   return (
     <Container>
@@ -99,8 +102,10 @@ const Main = ({
           <SearchButton onClick={handleSearchUsers}>Search</SearchButton>
         </form>
       </SearchForm>
+
       {users.length !== 0 && paginationVisible && (
         <PaginationBlock>
+          <SortByRepos sortType={sortType} setSortType={setSortType} />
           <Pagination onChangePage={(number) => setCurrentPage(number)} />
         </PaginationBlock>
       )}

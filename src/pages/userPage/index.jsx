@@ -15,9 +15,8 @@ export const UserPage = () => {
   const { login } = useParams();
 
   const [userInfo, setUsersInfo] = useState({});
-  console.log(userInfo);
   const [repos, setRepos] = useState([]);
-  console.log(repos);
+
 
   useEffect(() => {
     const fetchUserInfo = async () => {

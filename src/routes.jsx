@@ -9,7 +9,7 @@ export const AppRoutes = () => {
   const [paginationVisible, setPaginationVisible] = useState(false);
   const [query, setQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
-
+  const [sortType, setSortType] = useState({ sortProperty: "" });
 
   return (
     <Routes>
@@ -25,7 +25,8 @@ export const AppRoutes = () => {
             setQuery={setQuery}
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
-
+            sortType={sortType}
+            setSortType={setSortType}
           />
         }
       />
