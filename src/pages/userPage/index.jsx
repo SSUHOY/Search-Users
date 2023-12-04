@@ -10,12 +10,24 @@ import {
 import { Link, useParams } from "react-router-dom";
 import axios from "../../axios";
 import RepoItem from "./repo";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 export const UserPage = () => {
   const { login } = useParams();
 
   const [userInfo, setUsersInfo] = useState({});
   const [repos, setRepos] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  console.log(setLoading);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const fetchUserInfo = async () => {
@@ -39,66 +51,86 @@ export const UserPage = () => {
       <Link to={"/"}>
         <S.BackToMainBtn>Back to main</S.BackToMainBtn>
       </Link>
-
-      <S.UserInformation>
-        <S.AvatarBox>
-          {userInfo?.avatar_url ? (
-            <S.Avatar src={userInfo?.avatar_url} />
-          ) : (
-            <S.LoadingAva>...</S.LoadingAva>
-          )}
-        </S.AvatarBox>
-        <S.UserContent>
-          <S.UserName>{login}</S.UserName>
-          <S.UserDescriptionSpan>description:</S.UserDescriptionSpan>
-          <S.UserDescriptionBox>
-            {userInfo?.bio ? (
-              <S.UserDescription>{userInfo?.bio}</S.UserDescription>
+      <SkeletonTheme baseColor="#161B22" highlightColor="#444">
+        <S.UserInformation>
+          <S.AvatarBox>
+            {userInfo?.avatar_url ? (
+              <S.Avatar src={userInfo?.avatar_url} />
             ) : (
-              <S.UserRepoNoDescription>No description</S.UserRepoNoDescription>
+              <Skeleton height="220px" width="220px" />
             )}
-          </S.UserDescriptionBox>
+          </S.AvatarBox>
+          <S.UserContent>
+            <S.UserName>{login}</S.UserName>
+            <S.UserDescriptionSpan>description:</S.UserDescriptionSpan>
+            {!loading ? (
+              <S.UserDescriptionBox>
+                {userInfo?.bio ? (
+                  <S.UserDescription>{userInfo?.bio}</S.UserDescription>
+                ) : (
+                  <S.UserRepoNoDescription>
+                    No description
+                  </S.UserRepoNoDescription>
+                )}
+              </S.UserDescriptionBox>
+            ) : (
+              <S.UserDescriptionBox>
+                <Skeleton height="50px" width="100%" />
+              </S.UserDescriptionBox>
+            )}
 
-          <S.UserMoreData>
-            <S.Followers>
-              <FollowersIcon />
-              {userInfo?.followers} Followers, {userInfo?.following} Following
-            </S.Followers>
-
-            {userInfo?.location && (
-              <S.GeoLocation>
-                <LocationIcon />
-                {userInfo?.location}
-              </S.GeoLocation>
+            {!loading ? (
+              <S.UserMoreData>
+                {userInfo?.followers ? (
+                  <S.Followers>
+                    <FollowersIcon />
+                    {userInfo?.followers} Followers, {userInfo?.following}{" "}
+                    Following
+                  </S.Followers>
+                ) : (
+                  ""
+                )}
+                {userInfo?.location && (
+                  <S.GeoLocation>
+                    <LocationIcon />
+                    {userInfo?.location}
+                  </S.GeoLocation>
+                )}
+                {userInfo?.blog && (
+                  <S.WebSite>
+                    <WebSiteIcon />
+                    {userInfo?.blog}
+                  </S.WebSite>
+                )}
+                {userInfo?.html_url && (
+                  <S.GitHubLink>
+                    <GitHubLink />
+                    {userInfo?.html_url}
+                  </S.GitHubLink>
+                )}
+              </S.UserMoreData>
+            ) : (
+              <Skeleton count={4} />
             )}
-            {userInfo?.blog && (
-              <S.WebSite>
-                <WebSiteIcon />
-                {userInfo?.blog}
-              </S.WebSite>
-            )}
-            {userInfo?.html_url && (
-              <S.GitHubLink>
-                <GitHubLink />
-                {userInfo?.html_url}
-              </S.GitHubLink>
-            )}
-          </S.UserMoreData>
-        </S.UserContent>
-      </S.UserInformation>
+          </S.UserContent>
+        </S.UserInformation>
+      </SkeletonTheme>
       {repos.length !== 0 ? (
         <S.UserRepos>
           <S.UserRepoTitle>Repositories</S.UserRepoTitle>
-          <S.UserRepoList>
-            {repos.map((repo, index) => (
-              <RepoItem key={index} repo={repo} />
-            ))}
-          </S.UserRepoList>
+          <SkeletonTheme
+            baseColor="#161B22"
+            highlightColor="#444"
+            height="120px">
+            <S.UserRepoList>
+              {repos.map((repo, index) => (
+                <RepoItem key={index} repo={repo} />
+              ))}
+            </S.UserRepoList>
+          </SkeletonTheme>
         </S.UserRepos>
       ) : (
-        <S.UserRepos>
-          <S.UserRepoTitle>No Repositories</S.UserRepoTitle>
-        </S.UserRepos>
+        ""
       )}
     </Container>
   );

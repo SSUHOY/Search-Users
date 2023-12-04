@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const User = styled.div`
   display: flex;
+
   padding: 10px 10px;
   max-width: 500px;
   width: 100%;

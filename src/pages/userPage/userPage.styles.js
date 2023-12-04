@@ -25,18 +25,28 @@ export const BackToMainBtn = styled.button`
   &:hover {
     background-color: #365774;
   }
+  @media (max-width: 768px) {
+    left: 0px;
+  }
 `;
 export const UserInformation = styled.div`
   display: flex;
   padding: 10px 40px;
   max-width: 780px;
+  height: 274px;
   width: 100%;
-  min-height: 280px;
   margin-top: 20px;
   color: #fff;
   background-color: #161b22;
   border-radius: 10px;
   margin-bottom: 20px;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    height: 500px;
+    padding: 10px 14px;
+  }
 `;
 
 export const AvatarBox = styled.div`
@@ -62,6 +72,9 @@ export const UserContent = styled.div`
   width: 100%;
   margin-top: 8px;
   padding-left: 100px;
+  @media (max-width: 768px) {
+    padding-left: 0px;
+  }
 `;
 
 export const Avatar = styled.img`
@@ -81,13 +94,13 @@ export const UserDescriptionSpan = styled.span`
   font-size: 10px;
   opacity: 0.5;
   color: #fff;
+  border-bottom: 1px solid #35363a;
 `;
 
 export const UserDescriptionBox = styled.div`
     overflow-y: scroll;
-    width: 350px;
+    max-width: 350px;
     height: 100px;
-    border-top: 1px solid #35363A;
     overflow-x: hidden; 
     padding: 5px 5px;
     &::-webkit-scrollbar {
@@ -134,6 +147,9 @@ export const GitHubLink = styled.p`
 export const UserRepos = styled.div`
   max-width: 780px;
   width: 100%;
+  @media (max-width: 768px) {
+    padding: 10px 10px;
+  }
 `;
 export const UserRepoTitle = styled.h2`
   color: #fff;
@@ -171,7 +187,7 @@ export const RepoIconBlock = styled.div`
 
 export const UserRepoDescriptionBox = styled.div`
 overflow-y: scroll;
-width: 660px;
+width: 100%;;
 height: 120px;
 overflow-x: hidden; 
 padding: 2px 1px;

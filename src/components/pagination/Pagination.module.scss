@@ -9,8 +9,9 @@
 
     a {
       width: 24px;
-      height: 18px;
-      display: inline-block;
+      height: 28px;
+      display: flex;
+      flex-direction: row;
       justify-content: center;
       align-items: center;
       color: white;
@@ -18,8 +19,9 @@
       border-radius: 7px;
       font-size: 12px;
       line-height: 16px;
-      padding-left: 8px;
+
       font-family: "Roboto", sans-serif;
+
       &:hover {
         background-color: #68cdfe;
         color: black;

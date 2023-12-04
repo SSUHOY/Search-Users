@@ -8,12 +8,13 @@ import {
   SearchResults,
   SearchTitle,
 } from "./mainPage.styles";
-import UserCard from "../../components/searchUsers";
+import UserCard from "../../components/userCard";
 import { Container } from "../../components/styles/reusable";
 import axios from "../../axios";
 import { Pagination } from "../../components/pagination";
 import { SortByRepos } from "../../components/sorting";
 import "react-loading-skeleton/dist/skeleton.css";
+import { SkeletonTheme } from "react-loading-skeleton";
 
 const Main = ({
   users,
@@ -95,12 +96,13 @@ const Main = ({
           <Pagination onChangePage={(number) => setCurrentPage(number)} />
         </PaginationBlock>
       )}
-
-      <SearchResults>
-        {users?.map((user, index) => (
-          <UserCard key={index} user={user} />
-        ))}
-      </SearchResults>
+      <SkeletonTheme baseColor="#161B22" highlightColor="#444" height="120px">
+        <SearchResults>
+          {users?.map((user, index) => (
+            <UserCard key={index} user={user} />
+          ))}
+        </SearchResults>
+      </SkeletonTheme>
     </Container>
   );
 };
