@@ -151,6 +151,15 @@ export const UserRepos = styled.div`
     padding: 10px 10px;
   }
 `;
+
+export const TitleReposBlock = styled.div`
+  display: flex;
+  justify-content: space-between;
+  @media (max-width: 768px) {
+    margin-bottom: 10px;
+  }
+`;
+
 export const UserRepoTitle = styled.h2`
   color: #fff;
   margin-bottom: 12px;

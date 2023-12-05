@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import {
   Error,
   PaginationBlock,
+  ResultsError,
   SearchButton,
   SearchForm,
   SearchInput,
@@ -29,7 +30,8 @@ const Main = ({
   setSortType,
 }) => {
   const [error, setError] = useState("");
-
+  const [data, setData] = useState({});
+  
   const handleQueryInput = (event) => {
     const value = event.target.value;
     if (value) {
@@ -48,10 +50,10 @@ const Main = ({
           "&sort=repositories" +
           `&order=${sortType.sortProperty}`
       );
-      console.log(data);
+      setData(data);
       return setUsers(data?.items);
     } catch (error) {
-      console.error(error);
+      console.error(error.message);
     }
   };
 
@@ -93,15 +95,20 @@ const Main = ({
       {users.length !== 0 && paginationVisible && (
         <PaginationBlock>
           <SortByRepos sortType={sortType} setSortType={setSortType} />
-          <Pagination onChangePage={(number) => setCurrentPage(number)} />
+          <Pagination
+            onChangePage={(number) => setCurrentPage(number)}
+            currentPage={currentPage}
+            data={data.total_count}
+          />
         </PaginationBlock>
       )}
       <SkeletonTheme baseColor="#161B22" highlightColor="#444" height="120px">
         <SearchResults>
           {users?.map((user, index) => (
-            <UserCard key={index} user={user} currentPage={currentPage}/>
+            <UserCard key={index} user={user} currentPage={currentPage} />
           ))}
         </SearchResults>
+        <ResultsError>{users.length === 0 && "No results found"}</ResultsError>
       </SkeletonTheme>
     </Container>
   );

@@ -5,22 +5,21 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
 const UserCard = ({ user }) => {
-
   const { login, id, avatar_url } = user;
 
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setLoading(false);
-    }, 1000);
+      setLoading(true);
+    }, 800);
     return () => clearTimeout(timer);
   }, []);
 
   return (
     <>
       {" "}
-      {loading ? (
+      {!loading ? (
         <Skeleton width="500px" height="140px" border-radius="10px" />
       ) : (
         <S.User>

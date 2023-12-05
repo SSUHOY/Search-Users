@@ -12,39 +12,41 @@ import axios from "../../axios";
 import RepoItem from "./repo";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { Pagination } from "../../components/pagination";
 
 export const UserPage = () => {
   const { login } = useParams();
 
   const [userInfo, setUsersInfo] = useState({});
   const [repos, setRepos] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  console.log(setLoading);
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [data, setData] = useState({});
+  console.log("🚀 ~ file: index.jsx:25 ~ UserPage ~ data:", data);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setLoading(false);
-    }, 1000);
+      setLoading(true);
+    }, 750);
     return () => clearTimeout(timer);
-  }, []);
+  }, [currentPage]);
 
   useEffect(() => {
     const fetchUserInfo = async () => {
       try {
         const response = await Promise.all([
           axios.get(`/users/${login}`),
-          axios.get(`/users/${login}/repos`),
+          axios.get(`/users/${login}/repos?per_page=10&page=${currentPage}`),
         ]);
+        setData(response[0].data);
         setUsersInfo(response[0].data);
         setRepos(response[1].data);
-        console.log(response);
       } catch (error) {
         console.error(error);
       }
     };
     fetchUserInfo();
-  }, []);
+  }, [currentPage, login]);
 
   return (
     <Container>
@@ -63,7 +65,7 @@ export const UserPage = () => {
           <S.UserContent>
             <S.UserName>{login}</S.UserName>
             <S.UserDescriptionSpan>description:</S.UserDescriptionSpan>
-            {!loading ? (
+            {loading ? (
               <S.UserDescriptionBox>
                 {userInfo?.bio ? (
                   <S.UserDescription>{userInfo?.bio}</S.UserDescription>
@@ -79,7 +81,7 @@ export const UserPage = () => {
               </S.UserDescriptionBox>
             )}
 
-            {!loading ? (
+            {loading ? (
               <S.UserMoreData>
                 {userInfo?.followers ? (
                   <S.Followers>
@@ -115,23 +117,28 @@ export const UserPage = () => {
           </S.UserContent>
         </S.UserInformation>
       </SkeletonTheme>
-      {repos.length !== 0 ? (
-        <S.UserRepos>
-          <S.UserRepoTitle>Repositories</S.UserRepoTitle>
-          <SkeletonTheme
-            baseColor="#161B22"
-            highlightColor="#444"
-            height="120px">
-            <S.UserRepoList>
-              {repos.map((repo, index) => (
-                <RepoItem key={index} repo={repo} />
-              ))}
-            </S.UserRepoList>
-          </SkeletonTheme>
-        </S.UserRepos>
-      ) : (
-        ""
-      )}
+
+      <S.UserRepos>
+        {repos.length !== 0 ? (
+          <S.TitleReposBlock>
+            <S.UserRepoTitle>Repositories</S.UserRepoTitle>
+            <Pagination
+              onChangePage={(number) => setCurrentPage(number)}
+              currentPage={currentPage}
+              data={data.public_repos}
+            />
+          </S.TitleReposBlock>
+        ) : (
+          ""
+        )}
+        <SkeletonTheme baseColor="#161B22" highlightColor="#444" height="120px">
+          <S.UserRepoList>
+            {repos.map((repo, index) => (
+              <RepoItem key={index} repo={repo} />
+            ))}
+          </S.UserRepoList>
+        </SkeletonTheme>
+      </S.UserRepos>
     </Container>
   );
 };

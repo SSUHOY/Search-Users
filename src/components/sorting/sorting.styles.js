@@ -1,5 +1,29 @@
 import styled from "styled-components";
 
+export const SortByReposDropdown = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 80%;
+`;
+
+export const DropdownBtn = styled.button`
+  background-color: #1f6feb;
+  color: white;
+  width: 110px;
+  height: 20px;
+  border-radius: 10px;
+  font-size: 8px;
+  border: none;
+  outline: none;
+  &::before {
+    content: "˅ ";
+    position: relative;
+    width: 0;
+    height: 0;
+  }
+`;
+
 export const SortTitleBlock = styled.div`
   display: flex;
   align-items: center;
@@ -11,11 +35,21 @@ export const SortTitleBlock = styled.div`
 `;
 
 export const SortByReposBlock = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-right: 10px;
-  padding-top: 10px;
+  display: none;
+
+  &.active  {
+    display: block;
+    position: absolute;
+    background-color: #21262d;
+    width: 110px;
+    height: 70px;
+    z-index: 1;
+    top: 177px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #1f6feb;
+  }
+
   @media (max-width: 768px) {
     padding-right: 0px;
   }

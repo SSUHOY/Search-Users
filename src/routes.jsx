@@ -8,7 +8,7 @@ export const AppRoutes = () => {
   const [users, setUsers] = useState([]);
   const [paginationVisible, setPaginationVisible] = useState(false);
   const [query, setQuery] = useState("");
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
   const [sortType, setSortType] = useState({ sortProperty: "" });
 
   return (

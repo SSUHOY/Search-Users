@@ -73,8 +73,9 @@ export const PaginationBlock = styled.div`
   max-width: 480px;
   width: 100%;
   row-gap: 16px;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin-top: 10px;
   padding: 4px;
   border-radius: 10px;
