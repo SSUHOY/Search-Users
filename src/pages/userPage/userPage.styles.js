@@ -157,6 +157,7 @@ export const TitleReposBlock = styled.div`
   justify-content: space-between;
   @media (max-width: 768px) {
     margin-bottom: 10px;
+    flex-direction: column;
   }
 `;
 

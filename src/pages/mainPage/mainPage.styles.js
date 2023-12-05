@@ -58,8 +58,8 @@ export const SearchInput = styled.input`
 
 export const Error = styled.p`
   position: absolute;
-  top: 82px;
-  font-size: 8px;
+  top: 95px;
+  font-size: 10px;
   color: coral;
 `;
 export const ResultsError = styled.p`
@@ -67,6 +67,7 @@ export const ResultsError = styled.p`
   color: #fff;
   padding-top: 20px;
 `;
+
 
 export const PaginationBlock = styled.div`
   display: flex;

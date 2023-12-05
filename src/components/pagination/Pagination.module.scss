@@ -1,6 +1,6 @@
 .root {
   display: flex;
- 
+
   li {
     display: inline-block;
 
@@ -35,5 +35,8 @@
         color: black;
       }
     }
+  }
+  @media (max-width: 768px) {
+    justify-content: center;
   }
 }

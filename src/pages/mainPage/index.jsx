@@ -31,9 +31,11 @@ const Main = ({
 }) => {
   const [error, setError] = useState("");
   const [data, setData] = useState({});
-  
+  const [searchError, setSearchError] = useState("");
+
   const handleQueryInput = (event) => {
     const value = event.target.value;
+    setSearchError('')
     if (value) {
       setError("");
     }
@@ -51,6 +53,11 @@ const Main = ({
           `&order=${sortType.sortProperty}`
       );
       setData(data);
+      console.log(data?.items);
+      if (data?.items.length === 0) {
+        setSearchError("No results found");
+        console.log("нет результата");
+      }
       return setUsers(data?.items);
     } catch (error) {
       console.error(error.message);
@@ -108,7 +115,8 @@ const Main = ({
             <UserCard key={index} user={user} currentPage={currentPage} />
           ))}
         </SearchResults>
-        <ResultsError>{users.length === 0 && "No results found"}</ResultsError>
+        <ResultsError>{searchError}</ResultsError>
+        {users?.length === 0 && searchError === '' ? <ResultsError>Type any text to search github users</ResultsError> : ""}
       </SkeletonTheme>
     </Container>
   );
