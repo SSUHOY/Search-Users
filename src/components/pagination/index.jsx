@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import styles from "./Pagination.module.scss";
 
-export const Pagination = ({ onChangePage }) => {
+export const Pagination = ({ onChangePage, currentPage, data }) => {
+  const [pages, setPages] = useState(0);
+  console.log(pages);
+  useEffect(() => {
+    let pages = Math.ceil(data / 10);
+
+    if (pages > 100) {
+      let pages = 99;
+      return setPages(pages);
+    } else if (pages < 100) {
+      return setPages(pages);
+    }
+  }, [data]);
+
   return (
     <>
       <ReactPaginate
@@ -11,9 +24,10 @@ export const Pagination = ({ onChangePage }) => {
         nextLabel=">"
         onPageChange={(event) => onChangePage(event.selected + 1)}
         pageRangeDisplayed={10}
-        pageCount={9}
+        pageCount={pages}
         previousLabel="<"
         renderOnZeroPageCount={null}
+        initialPage={currentPage - 1}
       />
     </>
   );

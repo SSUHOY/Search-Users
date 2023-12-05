@@ -1,16 +1,14 @@
 .root {
   display: flex;
-  justify-content: flex-end;
-  margin-top: 6px;
-  cursor: pointer;
-
+ 
   li {
     display: inline-block;
 
     a {
       width: 24px;
-      height: 18px;
-      display: inline-block;
+      height: 28px;
+      display: flex;
+      flex-direction: row;
       justify-content: center;
       align-items: center;
       color: white;
@@ -18,8 +16,12 @@
       border-radius: 7px;
       font-size: 12px;
       line-height: 16px;
-      padding-left: 8px;
       font-family: "Roboto", sans-serif;
+      @media (max-width: 768px) {
+        width: 20px;
+        height: 30px;
+      }
+
       &:hover {
         background-color: #68cdfe;
         color: black;

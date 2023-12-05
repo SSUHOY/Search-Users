@@ -5,7 +5,8 @@ export const SearchForm = styled.div`
   padding: 16px;
   border-radius: 10px;
   height: 120px;
-  width: 400px;
+  max-width: 400px;
+  width: 100%;
   display: flex;
   margin-top: 20px;
   flex-direction: column;
@@ -20,7 +21,8 @@ export const SearchTitle = styled.h4`
 `;
 
 export const SearchButton = styled.button`
-  width: 300px;
+  max-width: 300px;
+  width: 100%;
   height: 21px;
   border: none;
   border-radius: 5px;
@@ -68,13 +70,18 @@ export const ResultsError = styled.p`
 
 export const PaginationBlock = styled.div`
   display: flex;
-  width: 480px;
+  max-width: 480px;
+  width: 100%;
   row-gap: 16px;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin-top: 10px;
   padding: 4px;
   border-radius: 10px;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const SearchResults = styled.div`
