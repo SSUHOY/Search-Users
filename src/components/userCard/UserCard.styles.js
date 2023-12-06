@@ -51,7 +51,7 @@ export const UserDescription = styled.p`
   text-overflow: ellipsis;
 `;
 
-export const ViewProfileLink = styled.a`
+export const ViewProfileLink = styled.p`
   font-size: 12px;
   font-weight: bold;
   color: #1f6feb;
