@@ -41,13 +41,15 @@ const Main = ({
   const handleQueryInput = (event) => {
     const value = event.target.value;
     setError("");
+    setSearchError("");
     if (value) {
       setError("");
+      setSearchError("");
     }
     setQuery(value);
   };
 
- const fetchUsers = async () => {
+  const fetchUsers = async () => {
     try {
       const { data } = await axios.get("search/users?q=" + query, {
         params: {
@@ -58,10 +60,18 @@ const Main = ({
         },
       });
       setData(data);
-      return dispatch(setUsersResults(data?.items)), data?.items;
+      if (data?.items?.length === 0) {
+        setSearchError("No users found");
+      }
+      return dispatch(setUsersResults(data?.items));
     } catch (error) {
       if (error.message === "Request failed with status code 422") {
-        return setError("Enter a valid text");
+        setError("Enter a valid text");
+      }
+      if (error.message === "Request failed with status code 403") {
+        setError(
+          "GitHub API request limit exceeded, reload page or wait a minute to resume"
+        );
       }
     }
   };
@@ -72,11 +82,8 @@ const Main = ({
       await fetchUsers();
       setPaginationVisible(true);
       setCurrentPage(1);
-    }
-    if (users.length === 0) {
-      setSearchError("No results found");
     } else if (query === "") {
-      setError("please enter a text to search");
+      setError("Enter a valid text");
     }
   };
 
@@ -84,10 +91,12 @@ const Main = ({
     const displayUsersOnChange = async () => {
       if (query) {
         await fetchUsers();
+        setError("");
       }
     };
     displayUsersOnChange();
   }, [currentPage, sortType]);
+
 
   return (
     <Container>
@@ -126,7 +135,7 @@ const Main = ({
             <UserCard key={index} user={user} currentPage={currentPage} />
           ))}
         </SearchResults>
-        <ResultsError>{searchError}</ResultsError>
+        {users.length === 0 ? <ResultsError>{searchError}</ResultsError> : ""}
       </SkeletonTheme>
     </Container>
   );

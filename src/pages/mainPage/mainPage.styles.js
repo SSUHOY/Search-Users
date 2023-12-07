@@ -4,7 +4,7 @@ export const SearchForm = styled.div`
   background-color: #21262d;
   padding: 16px;
   border-radius: 10px;
-  height: 120px;
+  height: 135px;
   max-width: 400px;
   width: 100%;
   display: flex;
@@ -30,7 +30,7 @@ export const SearchButton = styled.button`
   color: white;
   font-weight: bold;
   cursor: pointer;
-  margin-top: 12px;
+  margin-top: 24px;
   background-color: #1f6feb;
   transition: all 0.2s ease-in-out;
   &:hover {
@@ -58,8 +58,8 @@ export const SearchInput = styled.input`
 
 export const Error = styled.p`
   position: absolute;
-  top: 95px;
-  font-size: 10px;
+  top: 100px;
+  font-size: 11px;
   color: coral;
 `;
 export const ResultsError = styled.p`

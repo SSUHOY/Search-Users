@@ -7,7 +7,7 @@ import { NotFound } from "./pages/notFound";
 export const AppRoutes = () => {
   const [paginationVisible, setPaginationVisible] = useState(false);
   const [query, setQuery] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(0);
   const [sortType, setSortType] = useState({ sortProperty: "" });
 
   return (

@@ -44,7 +44,7 @@ export const SortByReposBlock = styled.div`
     width: 110px;
     height: 70px;
     z-index: 1;
-    top: 177px;
+    top: 192px;
     padding: 10px;
     border-radius: 10px;
     border: 1px solid #1f6feb;
