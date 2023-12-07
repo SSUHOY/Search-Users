@@ -16,10 +16,11 @@ import { Pagination } from "../../components/pagination";
 import { SortByRepos } from "../../components/sorting";
 import "react-loading-skeleton/dist/skeleton.css";
 import { SkeletonTheme } from "react-loading-skeleton";
+import { useDispatch, useSelector } from "react-redux";
+import { setUsersResults } from "../../store/actions/creators/users";
+import { usersSelector } from "../../store/selectors/users";
 
 const Main = ({
-  users,
-  setUsers,
   paginationVisible,
   setPaginationVisible,
   query,
@@ -31,29 +32,37 @@ const Main = ({
 }) => {
   const [error, setError] = useState("");
   const [data, setData] = useState({});
-  
+  const [searchError, setSearchError] = useState("");
+
+  const dispatch = useDispatch();
+
+  const users = useSelector(usersSelector);
+
   const handleQueryInput = (event) => {
     const value = event.target.value;
+    setError("");
     if (value) {
       setError("");
     }
     setQuery(value);
   };
 
-  const fetchUsers = async () => {
+ const fetchUsers = async () => {
     try {
-      const { data } = await axios.get(
-        "search/users?q=" +
-          query +
-          `&page=${currentPage}` +
-          "&per_page=10" +
-          "&sort=repositories" +
-          `&order=${sortType.sortProperty}`
-      );
+      const { data } = await axios.get("search/users?q=" + query, {
+        params: {
+          page: currentPage,
+          per_page: 10,
+          sort: "repositories",
+          order: sortType.sortProperty,
+        },
+      });
       setData(data);
-      return setUsers(data?.items);
+      return dispatch(setUsersResults(data?.items)), data?.items;
     } catch (error) {
-      console.error(error.message);
+      if (error.message === "Request failed with status code 422") {
+        return setError("Enter a valid text");
+      }
     }
   };
 
@@ -62,19 +71,28 @@ const Main = ({
     if (query) {
       await fetchUsers();
       setPaginationVisible(true);
-    } else {
+      setCurrentPage(1);
+    }
+    if (users.length === 0) {
+      setSearchError("No results found");
+    } else if (query === "") {
       setError("please enter a text to search");
     }
   };
 
   useEffect(() => {
-    fetchUsers();
+    const displayUsersOnChange = async () => {
+      if (query) {
+        await fetchUsers();
+      }
+    };
+    displayUsersOnChange();
   }, [currentPage, sortType]);
 
   return (
     <Container>
       <SearchForm>
-        <SearchTitle>GitHub Search User</SearchTitle>
+        <SearchTitle>GitHub Search Users</SearchTitle>
         <form
           style={{
             display: "flex",
@@ -108,7 +126,7 @@ const Main = ({
             <UserCard key={index} user={user} currentPage={currentPage} />
           ))}
         </SearchResults>
-        <ResultsError>{users.length === 0 && "No results found"}</ResultsError>
+        <ResultsError>{searchError}</ResultsError>
       </SkeletonTheme>
     </Container>
   );

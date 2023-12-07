@@ -22,7 +22,6 @@ export const UserPage = () => {
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [data, setData] = useState({});
-  console.log("🚀 ~ file: index.jsx:25 ~ UserPage ~ data:", data);
 
   useEffect(() => {
     const timer = setTimeout(() => {

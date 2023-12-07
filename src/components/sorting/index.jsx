@@ -19,8 +19,9 @@ export const SortByRepos = ({ sortType, setSortType }) => {
               id="q1"
               type="radio"
               name="sort"
+              defaultValue="initial value"
               checked={sortType?.sortProperty === ""}
-              onClick={() => setSortType({ sortProperty: "" })}
+              onChange={() => setSortType({ sortProperty: "" })}
             />
             <S.Label htmlFor="q1">Default</S.Label>
           </S.InputBlock>
@@ -30,7 +31,7 @@ export const SortByRepos = ({ sortType, setSortType }) => {
               type="radio"
               name="sort"
               checked={sortType?.sortProperty === "asc"}
-              onClick={() => setSortType({ sortProperty: "asc" })}
+              onChange={() => setSortType({ sortProperty: "asc" })}
             />
             <S.Label htmlFor="q1">Ascending</S.Label>
           </S.InputBlock>
@@ -40,7 +41,7 @@ export const SortByRepos = ({ sortType, setSortType }) => {
               type="radio"
               name="sort"
               checked={sortType?.sortProperty === "desc"}
-              onClick={() => setSortType({ sortProperty: "desc" })}
+              onChange={() => setSortType({ sortProperty: "desc" })}
             />
             <S.Label htmlFor="q1">Descending</S.Label>
           </S.InputBlock>

@@ -14,7 +14,10 @@ const RepoItem = ({ repo }) => {
     return () => clearTimeout(timer);
   }, []);
 
+  if (!repo) return null;
+
   const { name, language, description } = repo;
+
   return (
     <>
       {loading ? (

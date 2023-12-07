@@ -4,7 +4,7 @@ import styles from "./Pagination.module.scss";
 
 export const Pagination = ({ onChangePage, currentPage, data }) => {
   const [pages, setPages] = useState(0);
-  console.log(pages);
+
   useEffect(() => {
     let pages = Math.ceil(data / 10);
 
@@ -27,7 +27,7 @@ export const Pagination = ({ onChangePage, currentPage, data }) => {
         pageCount={pages}
         previousLabel="<"
         renderOnZeroPageCount={null}
-        initialPage={currentPage - 1}
+        forcePage={currentPage - 1}
       />
     </>
   );
