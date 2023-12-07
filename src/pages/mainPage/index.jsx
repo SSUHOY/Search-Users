@@ -21,8 +21,6 @@ import { setUsersResults } from "../../store/actions/creators/users";
 import { usersSelector } from "../../store/selectors/users";
 
 const Main = ({
-  users,
-  setUsers,
   paginationVisible,
   setPaginationVisible,
   query,
@@ -32,29 +30,24 @@ const Main = ({
   sortType,
   setSortType,
 }) => {
-
-console.log(users)
-
   const [error, setError] = useState("");
   const [data, setData] = useState({});
   const [searchError, setSearchError] = useState("");
 
   const dispatch = useDispatch();
 
-  const fetchUsersData = useSelector(usersSelector);
-
-  console.log(fetchUsersData);
+  const users = useSelector(usersSelector);
 
   const handleQueryInput = (event) => {
     const value = event.target.value;
-    setSearchError("");
+    setError("");
     if (value) {
       setError("");
     }
     setQuery(value);
   };
 
-  const fetchUsers = async () => {
+ const fetchUsers = async () => {
     try {
       const { data } = await axios.get("search/users?q=" + query, {
         params: {
@@ -65,16 +58,10 @@ console.log(users)
         },
       });
       setData(data);
-
-      if (data?.items.length === 0) {
-        setSearchError("No results found");
-        console.log("нет результата");
-      }
-      dispatch(setUsersResults(data?.items));
-      return setUsers(data?.items);
+      return dispatch(setUsersResults(data?.items)), data?.items;
     } catch (error) {
-      if(error.message === "Request failed with status code 422") {
-        return setSearchError("Enter a valid text");
+      if (error.message === "Request failed with status code 422") {
+        return setError("Enter a valid text");
       }
     }
   };
@@ -84,7 +71,11 @@ console.log(users)
     if (query) {
       await fetchUsers();
       setPaginationVisible(true);
-    } else {
+      setCurrentPage(1);
+    }
+    if (users.length === 0) {
+      setSearchError("No results found");
+    } else if (query === "") {
       setError("please enter a text to search");
     }
   };
@@ -92,7 +83,7 @@ console.log(users)
   useEffect(() => {
     const displayUsersOnChange = async () => {
       if (query) {
-       await fetchUsers();
+        await fetchUsers();
       }
     };
     displayUsersOnChange();
@@ -101,7 +92,7 @@ console.log(users)
   return (
     <Container>
       <SearchForm>
-        <SearchTitle>GitHub Search User</SearchTitle>
+        <SearchTitle>GitHub Search Users</SearchTitle>
         <form
           style={{
             display: "flex",
@@ -136,11 +127,6 @@ console.log(users)
           ))}
         </SearchResults>
         <ResultsError>{searchError}</ResultsError>
-        {users?.length === 0 && searchError === "" ? (
-          <ResultsError>Type any text to search github users</ResultsError>
-        ) : (
-          ""
-        )}
       </SkeletonTheme>
     </Container>
   );
