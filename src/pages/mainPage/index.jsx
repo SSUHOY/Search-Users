@@ -20,6 +20,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setUsersResults } from "../../store/actions/creators/users";
 import { usersSelector } from "../../store/selectors/users";
 
+
 const Main = ({
   paginationVisible,
   setPaginationVisible,
@@ -30,6 +31,7 @@ const Main = ({
   sortType,
   setSortType,
 }) => {
+
   const [error, setError] = useState("");
   const [data, setData] = useState({});
   const [searchError, setSearchError] = useState("");
@@ -40,8 +42,6 @@ const Main = ({
 
   const handleQueryInput = (event) => {
     const value = event.target.value;
-    setError("");
-    setSearchError("");
     if (value) {
       setError("");
       setSearchError("");
@@ -65,12 +65,13 @@ const Main = ({
       }
       return dispatch(setUsersResults(data?.items));
     } catch (error) {
+      console.log(error.message)
       if (error.message === "Request failed with status code 422") {
         setError("Enter a valid text");
       }
       if (error.message === "Request failed with status code 403") {
         setError(
-          "GitHub API request limit exceeded, reload page or wait a minute to resume"
+          "GitHub API request limit exceeded: 10 request per minute, reload page or wait a minute to resume"
         );
       }
     }
@@ -91,12 +92,10 @@ const Main = ({
     const displayUsersOnChange = async () => {
       if (query) {
         await fetchUsers();
-        setError("");
       }
     };
     displayUsersOnChange();
   }, [currentPage, sortType]);
-
 
   return (
     <Container>

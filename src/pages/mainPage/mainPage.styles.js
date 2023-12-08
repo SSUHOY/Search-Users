@@ -5,7 +5,7 @@ export const SearchForm = styled.div`
   padding: 16px;
   border-radius: 10px;
   height: 135px;
-  max-width: 400px;
+  max-width: 484px;
   width: 100%;
   display: flex;
   margin-top: 20px;
@@ -23,7 +23,7 @@ export const SearchTitle = styled.h4`
 export const SearchButton = styled.button`
   max-width: 300px;
   width: 100%;
-  height: 21px;
+  height: 24px;
   border: none;
   border-radius: 5px;
   font-size: 12px;
@@ -40,7 +40,7 @@ export const SearchButton = styled.button`
 
 export const SearchInput = styled.input`
   width: 100%;
-  height: 25px;
+  height: 28px;
   background-color: #0d1117;
   color: white;
   border: 1px solid grey;
@@ -58,8 +58,8 @@ export const SearchInput = styled.input`
 
 export const Error = styled.p`
   position: absolute;
-  top: 100px;
-  font-size: 11px;
+  top: 104px;
+  font-size: 10.5px;
   color: coral;
 `;
 export const ResultsError = styled.p`
