@@ -20,7 +20,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { setUsersResults } from "../../store/actions/creators/users";
 import { usersSelector } from "../../store/selectors/users";
 
-
 const Main = ({
   paginationVisible,
   setPaginationVisible,
@@ -31,7 +30,6 @@ const Main = ({
   sortType,
   setSortType,
 }) => {
-
   const [error, setError] = useState("");
   const [data, setData] = useState({});
   const [searchError, setSearchError] = useState("");
@@ -65,7 +63,6 @@ const Main = ({
       }
       return dispatch(setUsersResults(data?.items));
     } catch (error) {
-      console.log(error.message)
       if (error.message === "Request failed with status code 422") {
         setError("Enter a valid text");
       }

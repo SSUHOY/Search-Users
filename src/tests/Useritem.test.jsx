@@ -24,7 +24,6 @@ describe("ReposList", () => {
     wrapper = render(<RepoItem repo={dataRepos} />);
   });
   it("Renders repo item", () => {
-    console.log(wrapper.debug());
     expect(wrapper).not.toBeNull();
   });
   it("Renders user card snapshot", () => {
@@ -38,7 +37,6 @@ describe("UserCard", () => {
     wrapper = render(<UserCard user={userData} />);
   });
   it("Renders userCard item", () => {
-    console.log(wrapper.debug());
     expect(wrapper).not.toBeNull();
   });
 });
