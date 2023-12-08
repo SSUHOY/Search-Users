@@ -61,15 +61,17 @@ const Main = ({
       if (data?.items?.length === 0) {
         setSearchError("No users found");
       }
-      return dispatch(setUsersResults(data?.items));
+      return dispatch(setUsersResults(data?.items)), setError("");
     } catch (error) {
       if (error.message === "Request failed with status code 422") {
         setError("Enter a valid text");
+        dispatch(setUsersResults([]));
       }
       if (error.message === "Request failed with status code 403") {
         setError(
           "GitHub API request limit exceeded: 10 request per minute, reload page or wait a minute to resume"
         );
+        dispatch(setUsersResults([]));
       }
     }
   };
@@ -82,6 +84,9 @@ const Main = ({
       setCurrentPage(1);
     } else if (query === "") {
       setError("Enter a valid text");
+      dispatch(setUsersResults([]));
+    } else if (!error) {
+      setError("");
     }
   };
 
