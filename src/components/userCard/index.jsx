@@ -5,7 +5,7 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
 const UserCard = ({ user }) => {
-  if (!user) return null;
+
   const { login, id, avatar_url } = user;
 
   const [loading, setLoading] = useState(false);

@@ -4,8 +4,8 @@ export const SearchForm = styled.div`
   background-color: #21262d;
   padding: 16px;
   border-radius: 10px;
-  height: 120px;
-  max-width: 400px;
+  height: 135px;
+  max-width: 484px;
   width: 100%;
   display: flex;
   margin-top: 20px;
@@ -23,14 +23,14 @@ export const SearchTitle = styled.h4`
 export const SearchButton = styled.button`
   max-width: 300px;
   width: 100%;
-  height: 21px;
+  height: 24px;
   border: none;
   border-radius: 5px;
   font-size: 12px;
   color: white;
   font-weight: bold;
   cursor: pointer;
-  margin-top: 12px;
+  margin-top: 24px;
   background-color: #1f6feb;
   transition: all 0.2s ease-in-out;
   &:hover {
@@ -40,7 +40,7 @@ export const SearchButton = styled.button`
 
 export const SearchInput = styled.input`
   width: 100%;
-  height: 25px;
+  height: 28px;
   background-color: #0d1117;
   color: white;
   border: 1px solid grey;
@@ -58,8 +58,8 @@ export const SearchInput = styled.input`
 
 export const Error = styled.p`
   position: absolute;
-  top: 95px;
-  font-size: 10px;
+  top: 104px;
+  font-size: 10.5px;
   color: coral;
 `;
 export const ResultsError = styled.p`
