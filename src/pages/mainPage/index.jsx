@@ -69,7 +69,7 @@ const Main = ({
       }
       if (error.message === "Request failed with status code 403") {
         setError(
-          "GitHub API request limit exceeded: 10 request per minute, reload page or wait a minute to resume"
+          "GitHub API request limit exceeded: 10 request per minute, please wait a minute to resume"
         );
         dispatch(setUsersResults([]));
       }
