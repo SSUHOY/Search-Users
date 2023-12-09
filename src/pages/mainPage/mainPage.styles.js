@@ -61,13 +61,17 @@ export const Error = styled.p`
   top: 104px;
   font-size: 10.5px;
   color: coral;
+  @media (max-width: 768px) {
+    top: 180px;
+    font-size: 14px;
+    text-align: center;
+  }
 `;
 export const ResultsError = styled.p`
   font-size: 15px;
   color: #fff;
   padding-top: 20px;
 `;
-
 
 export const PaginationBlock = styled.div`
   display: flex;
